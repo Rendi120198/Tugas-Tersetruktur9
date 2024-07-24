@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>M Rendi Saputra</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#home">My Website</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#beranda">from Sederhana</a></li>
+            
+        </ul>
+    </nav>
+    <section id="Home">
+        <h1>Selamat datang! Kami senang Anda berada di sini.</h1>
+               <p> Salam kenal ini adalah web perdanaku
+                <br>
+                Semoga web ini dapat menginspirasi Anda 
+                <a href="http://www.google.com">google</a> 
+                Silakan hubungi saya jika ada yang ingin didiskusikan <a
+            href="mrendisaputra056@gmail.com" target="send mail">email</a></p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    <section id="about">
+        <h2>About</h2>
+        <br>
+        <div class="About-item">
+            <img src="as.jpg" alt="Proyek 1">
+            <pre>                Nama    : M Rendi Saputra
+                nim     : 21011400843
+                Kelas   : 05TPLE008
+                Jurusan : Teknik Informatika
+            </pre>
+        </div>
+        </div>
+        <br><br><br><br><br>
+    </section>
+
+    <section id="#beranda">
+        <h2>From Sederhana</h2>
+        <br><br><br><br>
+        <form id="inputMahasiswa">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama"><br><br>
+        
+            <label for="nim">NIM:</label>
+            <input type="text" id="nim"><br><br>
+        
+            <label for="jumlahMatakuliah">Jumlah Matakuliah:</label>
+            <input type="number" id="jumlahMatakuliah"><br><br>
+        
+            <div id="matakuliahInputs"></div>
+        
+            <button type="button" onclick="hitungNilai()">Hitung Nilai</button>
+          </form>
+        
+          <div id="hasilMahasiswa"></div>
+        
+          <script>
+            function hitungNilai() {
+              var nama = document.getElementById("nama").value;
+              var nim = document.getElementById("nim").value;
+              var jumlahMatakuliah = parseInt(document.getElementById("jumlahMatakuliah").value);
+        
+              var hasilMahasiswa = document.getElementById("hasilMahasiswa");
+              var matakuliahInputs = document.getElementById("matakuliahInputs");
+        
+              hasilMahasiswa.innerHTML = "";
+              hasilMahasiswa.innerHTML += "<h2>Informasi Mahasiswa</h2>";
+              hasilMahasiswa.innerHTML += "<p>Nama: " + nama + "</p>";
+              hasilMahasiswa.innerHTML += "<p>NIM: " + nim + "</p>";
+              hasilMahasiswa.innerHTML += "<p>Jumlah Matakuliah: " + jumlahMatakuliah + "</p>";
+        
+              var nilaiTotal = 0;
+              var totalBobot = 0;
+        
+              for (var i = 0; i < jumlahMatakuliah; i++) {
+                var namaMatakuliah = prompt("Masukkan nama matakuliah ke-" + (i + 1) + ":");
+                var jumlahKehadiran = parseInt(prompt("Masukkan jumlah kehadiran (max 21) untuk matakuliah " + namaMatakuliah + ":"));
+                jumlahKehadiran = Math.min(jumlahKehadiran, 21);
+                var nilaiTugas = parseFloat(prompt("Masukkan nilai tugas untuk matakuliah " + namaMatakuliah + ":"));
+                var nilaiUTS = parseFloat(prompt("Masukkan nilai UTS untuk matakuliah " + namaMatakuliah + ":"));
+                var nilaiUAS = parseFloat(prompt("Masukkan nilai UAS untuk matakuliah " + namaMatakuliah + ":"));
+        
+                var nilaiRata = 0.1 * (jumlahKehadiran / 21) * 100 + 0.2 * nilaiTugas + 0.3 * nilaiUTS + 0.4 * nilaiUAS;
+                nilaiTotal += nilaiRata;
+                totalBobot++;
+        
+                hasilMahasiswa.innerHTML += "<h3>Nilai Matakuliah ke-" + (i + 1) + "</h3>";
+                hasilMahasiswa.innerHTML += "<p>Nama Matakuliah: " + namaMatakuliah + "</p>";
+                hasilMahasiswa.innerHTML += "<p>Nilai Rata-rata: " + nilaiRata.toFixed(2) + "</p>";
+              }
+        
+              var nilaiAkhir = nilaiTotal / totalBobot;
+        
+              var grade;
+              if (nilaiAkhir >= 85) {
+                grade = 'A';
+              } else if (nilaiAkhir >= 75) {
+                grade = 'B';
+              } else if (nilaiAkhir >= 60) {
+                grade = 'C';
+              } else if (nilaiAkhir >= 50) {
+                grade = 'D';
+              } else {
+                grade = 'E';
+              }
+        
+              hasilMahasiswa.innerHTML += "<h3>Nilai Akhir</h3>";
+              hasilMahasiswa.innerHTML += "<p>Nilai Rata-rata Total: " + nilaiAkhir.toFixed(2) + "</p>";
+              hasilMahasiswa.innerHTML += "<p>Grade: " + grade + "</p>";
+            }
+          </script>
+          <br><br><br><br><br><br><br><br><br><br>
+    </section>
+
+
+
+
+
+
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Contact us on WhatsApp:</p>
+        <div class="wa-icon">
+            <a href="https://wa.me/6288225675831"> <!-- Ganti dengan nomor WhatsApp Anda -->
+                <img src="OIP.jpg" alt="WhatsApp">
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <!-- Ikon tautan ke Gmail -->
+            <a href="mrendisaputra056@gmail.com" target="send mail">
+                <i class="fa fa-envelope"></i>
+            </a>
+
+            <!-- Ikon tautan ke Facebook -->
+            <a href="https://www.facebook.com/YourPage" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+
+            <!-- Ikon tautan ke Twitter -->
+            <a href="https://twitter.com/YourPage" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </div>
+        <p>&copy; created by : M Rendi Saputra</p>
+    </footer>
+</body>
+</html>
